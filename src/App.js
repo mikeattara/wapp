@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import "./App.css";
-
 import WeatherInfo from "./components/weather-info";
 import { fetchWeather, formatWeatherData } from "./utils/api";
-
-const StyledDiv = styled.div`
-  border: 2px solid white;
-  border-radius: 2px;
-  padding: 2rem;
-`;
+import "./App.css";
 
 function App() {
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("accra");
   const [error, setError] = useState(null);
+
+  console.warn("IMPLEMENT WARNING FOR ERRORS SUCH AS CITY NOT FOUND!", error);
 
   const fetchData = (e) => {
     e.preventDefault();
@@ -45,9 +39,9 @@ function App() {
           />
           <button type="submit">Search</button>
         </form>
-        <StyledDiv>
+        <div>
           <WeatherInfo {...weather} />
-        </StyledDiv>
+        </div>
       </header>
     </div>
   );
